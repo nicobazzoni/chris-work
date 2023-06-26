@@ -13,7 +13,7 @@ const App = () => {
 
   const handleSignIn = () => {
     setSignedIn(true);
-    toast.success('Signed in successfully!');
+   
   };
 
   return (

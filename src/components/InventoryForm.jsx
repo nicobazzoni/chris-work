@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { addDoc, collection } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 const InventoryForm = ({ onFormSubmit }) => {
 
@@ -34,6 +35,8 @@ const InventoryForm = ({ onFormSubmit }) => {
   
     setType("");
     setCount(0);
+    toast.success('Inventory Added Successfully');
+    
   
   };
 

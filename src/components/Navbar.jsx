@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Home from './Home';
 import { getAuth,signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -12,6 +13,8 @@ const Navbar = () => {
         signOut(auth).then(() => {
           // Sign-out successful.
           console.log("User signed out.");
+            toast.success("Signed out successfully!");
+            navigation('/home');
         }).catch((error) => {
           // An error happened.
           console.error("Error signing out:", error);

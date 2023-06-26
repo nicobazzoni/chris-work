@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { addDoc, collection } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 const UploadForm = ({ onFormSubmit }) => {
   const [title, setTitle] = useState("");
@@ -36,6 +37,7 @@ const UploadForm = ({ onFormSubmit }) => {
     setToDo("");
     setCost(0);
     onFormSubmit();
+    toast.success('Project Added Successfully');
   };
 
   return (
