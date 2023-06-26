@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const navigation = useNavigate();
 
     const signOutUser = () => {
         const auth = getAuth();
@@ -14,7 +15,7 @@ const Navbar = () => {
           // Sign-out successful.
           console.log("User signed out.");
             toast.success("Signed out successfully!");
-            navigation('/home');
+            navigation('/');
         }).catch((error) => {
           // An error happened.
           console.error("Error signing out:", error);

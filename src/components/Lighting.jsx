@@ -3,6 +3,7 @@ import InventoryForm from './InventoryForm'
 import { getAuth,signOut } from 'firebase/auth';
 import '../index.css'
 import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc, setDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 
 const Lighting = () => {
@@ -28,8 +29,12 @@ const Lighting = () => {
     const inventoryRef = doc(db, 'users', user.uid, 'Inventory', inventory.id);  // use project.id here
     await deleteDoc(inventoryRef);
     toast('Inventory deleted', { type: 'success' });
-    fetchInventory();
+  
+    // update the inventory state directly
+    setInventory(prevInventory => prevInventory.filter(item => item.id !== inventory.id));
   };
+  
+  
 
   const updateCount = async (inventory, delta) => {
     const user = getAuth().currentUser;
